@@ -195,7 +195,10 @@ export default class extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (!nextProps.autoplay && this.autoplayTimer) clearTimeout(this.autoplayTimer)
-    this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
+    // Commenting out this line to WORKAROUND an issue that a looping swiper
+    // starts from the last slide occasionally.
+    // See: https://github.com/leecade/react-native-swiper/issues/731
+    // this.setState(this.initState(nextProps, this.props.index !== nextProps.index))
   }
 
   componentDidMount () {
